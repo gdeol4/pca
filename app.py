@@ -89,14 +89,17 @@ def generate_pca_plot(standard_df, sample_df):
                     fontsize=11, fontweight='bold', color='#4A4A4A'))
     
     adjust_text(texts,
-               arrowprops=dict(arrowstyle='->', color='black', lw=1.0),
-               expand_points=(3, 3),
-               force_points=(2, 2),
-               force_text=(2, 2),
-               ha='center',
-               va='bottom',
-               only_move={'points':'y', 'texts':'xy'},
-               lim=1000)
+           arrowprops=dict(arrowstyle='->', color='black', lw=1.0),
+           expand_points=(4, 4),     # Increased from 3 to 4 for more spacing
+           force_points=(2.5, 2.5),  # Increased from 2 to 2.5 for stronger repulsion
+           force_text=(2.5, 2.5),    # Increased to match force_points
+           ha='center',
+           va='bottom',
+           only_move={'points':'y', 'texts':'xy'},
+           add_objects=[],
+           lim=2000,                 # Increased from 1000 for more iterations
+           autoalign='xy'            # Added to help with alignment
+    )
     
     # Remove scientific notation from axes
     ax.ticklabel_format(style='plain')
